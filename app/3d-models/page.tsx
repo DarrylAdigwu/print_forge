@@ -1,18 +1,7 @@
-import { getAllModels } from "@/app/lib/models"
-import { Model } from "../types"
+import ModelsGrid from "@/app/components/ModelsGrid"
+import { getModels } from "@/app/lib/models"
 
-export default async function ModelPage() {
-    let modelsList = await getAllModels();
-    const modelNames = modelsList.map((model: Model) => {
-      return (
-        <div key={model.id}>
-            {model.name}
-        </div>
-      )
-    })
-  return(
-    <>
-    {modelNames}
-    </>
-  )
+export default async function Page() {
+    const models = await getModels()
+    return <ModelsGrid title="3D Models" models={models} />
 }
